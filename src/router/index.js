@@ -29,7 +29,7 @@ const redirectLogout = (to, from, next) => {
 }
 */
 const routes = [
-  {
+  /* {
     path: '/auth',
     component: () => import('@/views/auth/Auth'),
     children: [
@@ -60,6 +60,12 @@ const routes = [
         ],
       },
     ],
+  },*/
+  {
+    path: '/login',
+    name: 'login',
+    component: () =>
+      import(/* webpackChunkName: 'tables' */ '../views/pages/Login.vue'),
   },
   {
     path: '/pages',
@@ -455,6 +461,20 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login', '/register', '/home']
+  const authRequired = !publicPages.includes(to.path)
+  const loggedIn = localStorage.getItem('user')
+
+  // trying to access a restricted page + not logged in
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

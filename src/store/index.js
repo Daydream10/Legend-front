@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 
-import auth from './modules/auth/auth'
+//import auth from './modules/auth/auth'
 import password from './modules/auth/password'
 import signup from './modules/auth/signup'
 //import * as users from './modules/users'
-import users from './modules/users'
+//import users from './modules/users'
 import meetings from './modules/meetings'
 import * as notification from './modules/notification'
 import profile from './modules/profile'
@@ -22,6 +22,9 @@ import resources from './modules/resources'
 import artifacts from './modules/artifacts'
 import activities from './modules/activities'
 import actas from './modules/actas'
+import decanatos from './modules/decanatos'
+import users from './modules/users'
+import { auth } from './modules/auth.module'
 //import * as user from '@/store/modules/user.js'
 
 Vue.use(Vuex)
@@ -71,6 +74,9 @@ export default new Vuex.Store({
     board,
     activities,
     actas,
+    decanatos,
+    auth,
+    users,
   },
   strict: debug,
   plugins: debug ? [createLogger()] : [],

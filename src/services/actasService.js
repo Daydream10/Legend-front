@@ -1,16 +1,45 @@
-import api from '@/services/api.js'
+/* eslint-disable */
+import api from '@/services/api'
 
-export default class ActaService {
-  url = 'http://localhost:8080/api/'
-  getActas() {
-    return api.get(this.url + 'listar')
-  }
+export default {
+  getActas () {
+    return api.get('/acta/')
+  },
+  getActiveActas () {
+    return api.get('/acta/activos')
+  },
+  createActa (acta) {
+    return api.post('/acta/', acta)
+  },
+  getActasDecanato (id) {
+    return api.get(`/acta/decanato/${id}/`)
+  },
+  updateActa (id, acta) {
+    return api.put(`/acta/${id}`, acta)
+  },
+  deleteActa (codigo) {
+    return api.delete(`/acta/${codigo}`)
+  },
+  getContador () {
+    return api.get('/dash/contadores')
+  },
+  getContadorActas (cod, mes) {
+    return api.get(`/reporte/actasPorDecanato/${cod}/${mes}`)
+  },
+  getEstados(){
+    return api.get('/estado/activos/')
+  },
+  updateEstado (codigo, estado) {
+    return api.put(`/estado/${codigo}`, estado)
+  },
+  createEstado (estado) {
+    return api.post('/estado/', estado)
+  },
+  deleteEstado (codigo) {
+    return api.delete(`/estado/${codigo}`)
+  },
+  getActasReporte(cod, mes){
+    return api.get(`/reporte/listadeActas/${cod}/${mes}`)
 
-  save(acta) {
-    return api.post(this.url + 'save', acta)
-  }
-
-  edit(acta) {
-    return api.post(this.url + 'editar', acta.getId())
   }
 }
