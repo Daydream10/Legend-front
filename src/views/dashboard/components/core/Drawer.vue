@@ -147,10 +147,6 @@ export default {
       return {
         avatar: true,
         group: '/userprofile',
-        title:
-          this.user_auth.empleado.nombre +
-          ' ' +
-          this.user_auth.empleado.apellido,
         //title: this.$t(user.employee.name),
         children: [
           {

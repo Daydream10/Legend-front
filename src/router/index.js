@@ -190,17 +190,6 @@ const routes = [
         path: 'tables/data-tables',
         component: () => import('@/views/dashboard/tables/DataTables'),
       },
-      // Maps
-      {
-        name: 'Google Maps',
-        path: 'maps/google-maps',
-        component: () => import('@/views/dashboard/maps/GoogleMaps'),
-      },
-      {
-        name: 'Full Screen Map',
-        path: 'maps/full-screen-map',
-        component: () => import('@/views/dashboard/maps/FullScreenMap'),
-      },
       // Root level
       {
         name: 'Widgets',
@@ -218,94 +207,6 @@ const routes = [
         component: () => import('@/views/dashboard/Calendar'),
       },
 
-      // Users
-      {
-        name: 'UserList',
-        path: '/users/list',
-        component: () => import('@/views/dashboard/pages/user/List'),
-        props: true,
-        //beforeEnter: requireAuthenticated,
-      },
-      {
-        name: 'UserCreate',
-        path: '/users/create',
-        component: () => import('@/views/dashboard/pages/user/Create'),
-      },
-      {
-        name: 'UserUpdate',
-        path: '/users/edit/:id',
-        component: () => import('@/views/dashboard/pages/user/Update'),
-        props: true,
-      },
-      {
-        name: 'UserShow',
-        path: '/users/show/:id',
-        component: () => import('@/views/dashboard/pages/user/Show'),
-        props: true,
-      },
-      // Meeting
-      {
-        name: 'MeetingList',
-        path: '/meetings/:id_project',
-        component: () => import('@/views/dashboard/pages/meeting/List'),
-        props: true,
-      },
-      {
-        name: 'Meetings2',
-        path: '/meetings2/list',
-        component: () => import('@/views/dashboard/pages/meeting/List2'),
-        props: true,
-      },
-      {
-        name: 'MeetingCreate',
-        path: '/meetings/create/:id_project',
-        component: () => import('@/views/dashboard/pages/meeting/Create'),
-      },
-      {
-        name: 'MeetingUpdate',
-        path: '/meetings/edit/:id/:id_project',
-        component: () => import('@/views/dashboard/pages/meeting/Update'),
-        props: true,
-      },
-      {
-        name: 'MeetingShow',
-        path: '/meetings/show/:id',
-        component: () => import('@/views/dashboard/pages/meeting/Show'),
-        props: true,
-      },
-      //artifacts
-      {
-        name: 'ArtifactsCreate',
-        path: '/artifact/create/:id_project',
-        component: () =>
-          import('@/views/dashboard/pages/project/artifacts/Create'),
-        props: true,
-      },
-      {
-        name: 'ArtifactsList',
-        path: '/artifact/list/:id_project',
-        component: () =>
-          import('@/views/dashboard/pages/project/artifacts/List'),
-        props: true,
-      },
-      {
-        name: 'ProcessesList',
-        path: '/processes/list/:id_project',
-        component: () => import('@/views/dashboard/pages/processes/List'),
-        props: true,
-      },
-      {
-        name: 'ProcessCreate',
-        path: '/process/create/:id_project',
-        component: () => import('@/views/dashboard/pages/processes/Create'),
-        props: true,
-      },
-      {
-        name: 'ProcessUpdate',
-        path: '/process/edit/:id/:id_project',
-        component: () => import('@/views/dashboard/pages/processes/Update'),
-        props: true,
-      },
       {
         name: 'ActasList',
         path: '/actas/list/:id_decanato',
@@ -324,123 +225,11 @@ const routes = [
         component: () => import('@/views/dashboard/pages/acta/Update'),
         props: true,
       },
-
-      //Project
-      {
-        name: 'ProjectList',
-        path: '/projects/list',
-        component: () => import('@/views/dashboard/pages/project/List'),
-        props: true,
-        //beforeEnter: requireAuthenticated,
-      },
-      {
-        name: 'ProjectUpdate',
-        path: 'projects/edit/:id_project',
-        component: () => import('@/views/dashboard/pages/project/Update'),
-        props: true,
-        //beforeEnter: requireAuthenticated,
-      },
-      {
-        name: 'ProjectCreate',
-        path: '/projects/create',
-        component: () => import('@/views/dashboard/pages/project/Wizard'),
-        props: true,
-        //beforeEnter: requireAuthenticated,
-      },
-      {
-        name: 'ProjectDash',
-        path: '/projects/dash/:id_project',
-        component: () => import('@/views/dashboard/pages/project/ProjectDash'),
-        props: true,
-        //beforeEnter: requireAuthenticated,
-      },
       //Profile
       {
         name: 'Profile',
         path: '/userprofile/edit',
         component: () => import('@/views/dashboard/pages/user/UserProfile'),
-      },
-      // Members
-      {
-        name: 'MembersList',
-        path: '/members/list/:id_project',
-        component: () => import('@/views/dashboard/pages/members/List'),
-      },
-      {
-        name: 'MemberCreate',
-        path: '/member/create/:id_project',
-        component: () => import('@/views/dashboard/pages/members/Create'),
-      },
-      //Time  and Costs (Calculadoras)
-      {
-        name: 'Time',
-        path: 'projects/:id_project/time/',
-        component: () =>
-          import('@/views/dashboard/pages/project/planning/time'),
-        props: true,
-      },
-      {
-        name: 'Costs',
-
-        path: 'projects/:id_project/costs/',
-        component: () =>
-          import('@/views/dashboard/pages/project/planning/costs'),
-        props: true,
-      },
-      // Risk
-      {
-        name: 'RisksCreate',
-        path: '/project/:id_project/risks/create/',
-        component: () =>
-          import('@/views/dashboard/pages/project/risks/CreateR'),
-        props: true,
-      },
-      {
-        name: 'RisksCreate1',
-        path: '/project/:id_project/risks/create',
-        component: () => import('@/views/dashboard/pages/project/risks/Create'),
-        props: true,
-      },
-      {
-        name: 'RisksList',
-        path: '/project/:id_project/risks/list',
-        component: () => import('@/views/dashboard/pages/project/risks/List'),
-        props: true,
-      },
-
-      //Scope
-      {
-        name: 'Scope',
-        path: '/project/:id_project/planning/scope',
-        component: () =>
-          import('@/views/dashboard/pages/project/planning/scope'),
-        props: true,
-      },
-
-      //Resources
-      {
-        name: 'ResourcesCreate',
-        path: '/resources/create/:id_project',
-        component: () => import('@/views/dashboard/pages/resources/Create'),
-        props: true,
-      },
-      {
-        name: 'ResourcesUpdate',
-        path: '/resources/edit/:id/:id_project',
-        component: () => import('@/views/dashboard/pages/resources/Update'),
-        props: true,
-      },
-      {
-        name: 'ResourcesList',
-        path: '/resources/list/:id_project',
-        component: () => import('@/views/dashboard/pages/resources/List'),
-        props: true,
-      },
-      // Risks
-      {
-        name: 'Risk',
-        path: '/risk',
-        component: () => import('@/views/dashboard/pages/Risk/Risk'),
       },
     ],
   },
@@ -463,7 +252,7 @@ const router = new VueRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
   const publicPages = ['/login', '/register', '/home']
   const authRequired = !publicPages.includes(to.path)
   const loggedIn = localStorage.getItem('user')
@@ -475,6 +264,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-})
+})*/
 
 export default router

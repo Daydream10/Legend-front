@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -10,7 +9,6 @@ import vuetify from './plugins/vuetify'
 import i18n from '@/plugins/i18n'
 
 import '@/plugins/common'
-
 
 import VueSweetalert2 from 'vue-sweetalert2'
 
@@ -32,13 +30,6 @@ new Vue({
   router,
   store,
   vuetify,
-  el: '#app',
   i18n,
   render: (h) => h(App),
-  created() {
-    store.dispatch('setLocale', store.getters.locale)
-    if (store.getters.isTokenSet) {
-      store.dispatch('autoLogin')
-    }
-  },
 }).$mount('#app')

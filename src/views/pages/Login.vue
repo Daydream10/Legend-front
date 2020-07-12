@@ -59,6 +59,8 @@
               color=""
               depressed
               class="v-btn--text success--text"
+              :to="{ name: 'Dashboard' }"
+              @click="login()"
             >
               Let's Go
             </pages-btn>
@@ -93,5 +95,10 @@ export default {
       },
     ],
   }),
+  methods: {
+    login() {
+      this.$router.push('/')
+    },
+  },
 }
 </script>

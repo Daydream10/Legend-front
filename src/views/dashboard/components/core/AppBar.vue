@@ -36,29 +36,6 @@
       origin="top right"
       transition="scale-transition"
     >
-      <template v-slot:activator="{ attrs, on }">
-        <v-btn class="ml-2" min-width="0" text v-bind="attrs" v-on="on">
-          <v-badge color="red" overlap bordered>
-            <template v-slot:badge>
-              <span>{{ notifications.unread_count }}</span>
-            </template>
-
-            <v-icon>mdi-bell</v-icon>
-          </v-badge>
-        </v-btn>
-      </template>
-
-      <v-list :tile="false" nav>
-        <div>
-          <app-bar-item
-            v-for="n in notifications.unread_list"
-            :key="n.id"
-            to="nnn"
-          >
-            <v-list-item-title v-text="n.verb" />
-          </app-bar-item>
-        </div>
-      </v-list>
     </v-menu>
 
     <v-menu
@@ -121,7 +98,7 @@
 import { VHover, VListItem } from 'vuetify/lib'
 
 // Utilities
-import { mapState, mapMutations, mapGetters } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'DashboardCoreAppBar',
@@ -172,11 +149,11 @@ export default {
     ],
   }),
   created() {
-    this.$store.dispatch('notifications/fetchNotifications')
+    //   this.$store.dispatch('notifications/fetchNotifications')
   },
   computed: {
     ...mapState(['drawer']),
-    ...mapGetters('notifications', ['notifications']),
+    //  ...mapGetters('notifications', ['notifications']),
   },
 
   methods: {

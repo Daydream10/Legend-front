@@ -8,21 +8,21 @@ const state = {
     nombre: '',
     direccion: '',
     telefono: '',
-    estatus: ''
-  }
+    estatus: '',
+  },
 }
 
 const mutations = {
-  ADD_DECANATO (state, decanato) {
+  ADD_DECANATO(state, decanato) {
     state.decanatos.push(decanato)
   },
-  SET_DECANATOS (state, decanatos) {
+  SET_DECANATOS(state, decanatos) {
     state.decanatos = decanatos
   },
-  SET_ACTA (state, decanato) {
+  SET_DECANATO(state, decanato) {
     state.decanato = decanato
   },
-  UPDATE_ACTA (state, payload) {
+  UPDATE_ACTA(state, payload) {
     state.decanatos = state.decanatos.map((decanato) => {
       if (decanato.codigo === payload.codigo) {
         return Object.assign({}, decanato, payload.data)
@@ -30,14 +30,16 @@ const mutations = {
       return decanato
     })
   },
-
-  [types.FILL_ACTA] (state, data) {
+  [types.CHANGE_STATE_DECANATO](state) {
+    state.decanato.estatus = false
+  },
+  [types.FILL_DECANATO](state, data) {
     state.decanato.descripcion = data.descripcion
     state.decanato.tipo = data.tipo
     state.decanato.fecha = data.fecha
     state.decanato.ult_actializacion = data.ult_actializacion
   },
-  [types.ADD_DECANATO_DATA] (state, data) {
+  [types.ADD_DECANATO_DATA](state, data) {
     switch (data.key) {
       case 'nombre':
         state.decanato.nombre = data.value
@@ -54,11 +56,11 @@ const mutations = {
       default:
         break
     }
-  }
+  },
 }
 
 const actions = {
-  createDecanato ({ commit }, decanato) {
+  createDecanato({ commit }, decanato) {
     return decanatosService
       .createDecanato(decanato)
       .then((response) => {
@@ -69,8 +71,9 @@ const actions = {
         console.log(error)
       })
   },
-  fetchDecanatos ({ commit }) {
-    decanatosService.getDecanatos()
+  fetchDecanatos({ commit }) {
+    decanatosService
+      .getDecanatos()
       .then((response) => {
         console.log(response.data)
         commit('SET_DECANATOS', response.data)
@@ -79,8 +82,9 @@ const actions = {
         console.log(error)
       })
   },
-  fetchActiveDecanatos ({ commit }) {
-    decanatosService.getActiveDecanatos()
+  fetchActiveDecanatos({ commit }) {
+    decanatosService
+      .getActiveDecanatos()
       .then((response) => {
         console.log(response.data)
         commit('SET_DECANATOS', response.data)
@@ -111,13 +115,15 @@ const actions = {
     }
   }, */
 
-  saveDecanato ({ commit }, payload) {
+  saveDecanato({ commit }, payload) {
     console.log(payload)
     console.log('hi')
     decanatosService
       .updateDecanato(payload.codigo, payload)
       .then((response) => {
         if (response.status === 200) {
+          commit(types.FILL_DECANATO, response.data)
+
           console.log('se guardo')
         }
       })
@@ -125,18 +131,20 @@ const actions = {
         console.log(error)
       })
   },
-  deleteDecanato ({ commit }, codigo) {
+  deleteDecanato({ commit }, codigo) {
     decanatosService
       .deleteDecanato(codigo)
       .then((response) => {
         if (response.status === 200) {
+          commit(types.CHANGE_STATE_DECANATO, response.data)
+
           console.log('se elimino')
         }
       })
       .catch((error) => {
         console.log(error)
       })
-  }
+  },
 }
 const getters = {
   getDecanatoByCodigo: (state) => (codigo) => {
@@ -145,7 +153,7 @@ const getters = {
   decanatos: (state) => {
     return state.decanatos
   },
-  decanato: (state) => state.decanato
+  decanato: (state) => state.decanato,
 }
 
 export default {
@@ -153,5 +161,5 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 }

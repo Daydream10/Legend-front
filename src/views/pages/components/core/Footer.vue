@@ -7,7 +7,8 @@
         <v-col cols="12" md="auto">
           <div class="body-1 font-weight-light pt-6 pt-md-0 text-center">
             &copy; 2020, made with
-            <v-icon size="20">mdi-heart</v-icon>by Systeem for a better web.
+            <v-icon size="20">mdi-heart</v-icon>by Equipo Lab II for a better
+            web.
           </div>
         </v-col>
       </v-row>
