@@ -1,14 +1,7 @@
 <template>
-  <v-container
-    id="acta-profile"
-    fluid
-    tag="section"
-  >
+  <v-container id="user-profile" fluid tag="section">
     <v-row justify="center">
-      <v-col
-        cols="12"
-        md="8"
-      >
+      <v-col cols="12" md="8">
         <base-material-card icon="mdi-account-outline">
           <template v-slot:after-heading>
             <div class="font-weight-light card-title mt-2">
@@ -16,16 +9,13 @@
               <span class="body-1">— Registro de Acta</span>
             </div>
           </template>
-          <validation-observer ref="obs">
+          <ValidationObserver ref="obs">
             <v-form>
               <v-container class="py-0">
                 <v-row>
-                  <v-col
-                    cols="12"
-                    md="6"
-                  >
-                    <v-select-with-validation
-                      v-model="inputs.tipo_servicio"
+                  <v-col cols="12" md="6">
+                    <VSelectWithValidation
+                      v-model="type"
                       :items="items"
                       item-text="name"
                       item-value="id"
@@ -35,12 +25,9 @@
                       prepend-icon="mdi-account-group"
                     />
                   </v-col>
-                  <v-col
-                    cols="12"
-                    md="4"
-                  >
-                    <v-text-field-with-validation
-                      v-model="inputs.descripcion"
+                  <v-col cols="12" md="4">
+                    <VTextFieldWithValidation
+                      v-model="descripcion"
                       label="Descripcion"
                       color="secondary"
                       prepend-icon="mdi-account"
@@ -48,14 +35,8 @@
                       class="purple-input"
                     />
                   </v-col>
-                  <v-col
-                    cols="12"
-                    md="4"
-                  >
-                    <v-col
-                      cols="6"
-                      md="6"
-                    >
+                  <v-col cols="12" md="4">
+                    <v-col cols="6" md="6">
                       <div
                         class="font-weight-light card-title mt-1"
                         text-align="center"
@@ -74,10 +55,7 @@
                       </v-row>
                     </v-col>
 
-                    <v-col
-                      cols="12"
-                      class="text-right"
-                    >
+                    <v-col cols="12" class="text-right">
                       <v-btn
                         color="success"
                         class="ml-0"
@@ -98,7 +76,7 @@
                 </v-row>
               </v-container>
             </v-form>
-          </validation-observer>
+          </ValidationObserver>
         </base-material-card>
       </v-col>
     </v-row>
@@ -106,60 +84,81 @@
 </template>
 
 <script>
-  import { ValidationObserver } from 'vee-validate'
-  import VTextFieldWithValidation from '@/components/inputs/VTextFieldWithValidation'
-  import VSelectWithValidation from '@/components/inputs/VSelectWithValidation'
-  import { mapActions, mapState } from 'vuex'
+import { ValidationObserver } from 'vee-validate'
+import VTextFieldWithValidation from '@/components/inputs/VTextFieldWithValidation'
+import VSelectWithValidation from '@/components/inputs/VSelectWithValidation'
+import { mapActions } from 'vuex'
 
-  export default {
-    components: {
-      ValidationObserver,
-      VTextFieldWithValidation,
-      VSelectWithValidation,
-    },
-    data () {
-      return {
-        show: false,
-        show2: false,
-        items: [
-          { name: 'Ordinario', id: '1' },
-          { name: 'Extraordinario', id: '2' },
-        ],
-        inputs: {
-          tipoServicio: '',
-          descripcion: '',
-          fecha: '',
-        },
+export default {
+  components: {
+    ValidationObserver,
+    VTextFieldWithValidation,
+    VSelectWithValidation
+  },
+  data() {
+    return {
+      items: [
+        { name: 'Ordinario', id: '1' },
+        { name: 'Extraordinario', id: '2' }
+      ]
+    }
+  },
+  computed: {
+    descripcion: {
+      get() {
+        return <this class="$store state acta descripcion"></this>
+      },
+      set(value) {
+        const data = {
+          key: 'descripcion',
+          value
+        }
+        this.addActaData(data)
       }
     },
-    computed: {
-      ...mapState('signup', [
-        'registrationCompleted',
-        'registrationError',
-        'registrationLoading',
-      ]),
-    },
-    methods: {
-      submit () {
-        this.$refs.obs.validate()
+    type: {
+      get() {
+        return this.$store.state.users.user.tipo_usuario.nombre
       },
-      ...mapActions('acta', ['createActa']),
-      beforeRouteLeave (to, from, next) {
-        alert('test2')
-        if (this.$store.commit('registrationCompleted')) {
-          next('/acta')
-          alert('test')
-        } else {
-          next()
+
+      set(value) {
+        const data = {
+          key: 'type',
+          value
         }
-      },
-      goBack (goBackByStep) {
-        // (-ve  => go back/ +ve => go forward)
-        var step = goBackByStep || -1
-        setTimeout(() => {
-          this.$router.go(step)
-        }, 3000)
-      },
+        this.addActaData(data)
+      }
     },
+    getTypeId(tipoServicio) {
+      let typeId = null
+      this.items.forEach((item) => {
+        if (item.name === tipoServicio) typeId = item.id
+      })
+
+      if (typeId === null) {
+        console.warn(
+          'Tipo servicio not found with tipoServicio: ',
+          tipoServicio
+        )
+      }
+      return typeId
+    }
+  },
+  methods: {
+    ...mapActions('acta', ['fetchActa', 'addActaData', 'saveActar']),
+    async submit() {
+      await this.saveActa({
+        id: this.id,
+        tipoServicio: {
+          nombre: this.type
+        },
+        descripcion: this.descripcion
+      })
+    }
+  },
+  props: ['id'],
+  async mounted() {
+    await this.fetchActa(this.id)
   }
+}
 </script>

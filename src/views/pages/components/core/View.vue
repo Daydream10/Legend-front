@@ -6,7 +6,7 @@
     <v-img
       :class="{
         'v-image--sm': this.$vuetify.breakpoint.smAndDown,
-        'v-image--md': this.$vuetify.breakpoint.mdAndDown,
+        'v-image--md': this.$vuetify.breakpoint.mdAndDown
       }"
       :src="require(`@/assets/${src || 'clint-mckoy.jpg'}`)"
       gradient="to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)"
@@ -32,8 +32,8 @@ export default {
       '/pages/lock': 'lock.jpg',
       '/pages/login': 'login.jpg',
       '/pages/pricing': 'pricing.jpg',
-      '/pages/register': 'register.jpg',
-    },
+      '/pages/register': 'register.jpg'
+    }
   }),
 
   computed: {
@@ -44,9 +44,9 @@ export default {
       const paddingTop = this.$vuetify.breakpoint.mdAndUp ? 175 : 100
       const paddingBottom = this.$vuetify.breakpoint.mdAndUp ? 175 : 150
       return {
-        padding: `${paddingTop}px 0 ${paddingBottom}px 0`,
+        padding: `${paddingTop}px 0 ${paddingBottom}px 0`
       }
-    },
-  },
+    }
+  }
 }
 </script>

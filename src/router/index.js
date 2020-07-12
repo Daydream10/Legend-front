@@ -65,7 +65,7 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () =>
-      import(/* webpackChunkName: 'tables' */ '../views/pages/Login.vue'),
+      import(/* webpackChunkName: 'tables' */ '../views/pages/Login.vue')
   },
   {
     path: '/pages',
@@ -74,24 +74,24 @@ const routes = [
       {
         name: 'Lock',
         path: 'lock',
-        component: () => import('@/views/pages/Lock'),
+        component: () => import('@/views/pages/Lock')
       },
       {
         name: 'Login',
         path: 'login',
-        component: () => import('@/views/pages/Login'),
+        component: () => import('@/views/pages/Login')
       },
       {
         name: 'Pricing',
         path: 'pricing',
-        component: () => import('@/views/pages/Pricing'),
+        component: () => import('@/views/pages/Pricing')
       },
       {
         name: 'Register',
         path: 'register',
-        component: () => import('@/views/pages/Register'),
-      },
-    ],
+        component: () => import('@/views/pages/Register')
+      }
+    ]
   },
   {
     path: '/',
@@ -103,135 +103,153 @@ const routes = [
       {
         name: 'Dashboard',
         path: '',
-        component: () => import('@/views/dashboard/Dashboard'),
+        component: () => import('@/views/dashboard/Dashboard')
       },
 
       // Pages
       {
         name: 'RTL',
         path: 'pages/rtl',
-        component: () => import('@/views/dashboard/pages/Rtl'),
+        component: () => import('@/views/dashboard/pages/Rtl')
       },
       {
         name: 'User Profile',
         path: 'pages/user',
-        component: () => import('@/views/dashboard/pages/UserProfile'),
+        component: () => import('@/views/dashboard/pages/UserProfile')
       },
       {
         name: 'Timeline',
         path: 'pages/timeline',
-        component: () => import('@/views/dashboard/pages/Timeline'),
+        component: () => import('@/views/dashboard/pages/Timeline')
       },
       // Components
       {
         name: 'Buttons',
         path: 'components/buttons',
-        component: () => import('@/views/dashboard/component/Buttons'),
+        component: () => import('@/views/dashboard/component/Buttons')
       },
       {
         name: 'Grid System',
         path: 'components/grid-system',
-        component: () => import('@/views/dashboard/component/Grid'),
+        component: () => import('@/views/dashboard/component/Grid')
       },
       {
         name: 'Tabs',
         path: 'components/tabs',
-        component: () => import('@/views/dashboard/component/Tabs'),
+        component: () => import('@/views/dashboard/component/Tabs')
       },
       {
         name: 'Notifications',
         path: 'components/notifications',
-        component: () => import('@/views/dashboard/component/Notifications'),
+        component: () => import('@/views/dashboard/component/Notifications')
       },
       {
         name: 'Icons',
         path: 'components/icons',
-        component: () => import('@/views/dashboard/component/Icons'),
+        component: () => import('@/views/dashboard/component/Icons')
       },
       {
         name: 'Typography',
         path: 'components/typography',
-        component: () => import('@/views/dashboard/component/Typography'),
+        component: () => import('@/views/dashboard/component/Typography')
       },
       // Forms
       {
         name: 'Regular Forms',
         path: 'forms/regular',
-        component: () => import('@/views/dashboard/forms/RegularForms'),
+        component: () => import('@/views/dashboard/forms/RegularForms')
       },
       {
         name: 'Extended Forms',
         path: 'forms/extended',
-        component: () => import('@/views/dashboard/forms/ExtendedForms'),
+        component: () => import('@/views/dashboard/forms/ExtendedForms')
       },
       {
         name: 'Validation Forms',
         path: 'forms/validation',
-        component: () => import('@/views/dashboard/forms/ValidationForms'),
+        component: () => import('@/views/dashboard/forms/ValidationForms')
       },
       {
         name: 'Wizard',
         path: 'forms/wizard',
-        component: () => import('@/views/dashboard/forms/Wizard'),
+        component: () => import('@/views/dashboard/forms/Wizard')
       },
       // Tables
       {
         name: 'Regular Tables',
         path: 'tables/regular-tables',
-        component: () => import('@/views/dashboard/tables/RegularTables'),
+        component: () => import('@/views/dashboard/tables/RegularTables')
       },
       {
         name: 'Extended Tables',
         path: 'tables/extended-tables',
-        component: () => import('@/views/dashboard/tables/ExtendedTables'),
+        component: () => import('@/views/dashboard/tables/ExtendedTables')
       },
       {
         name: 'Data Tabels',
         path: 'tables/data-tables',
-        component: () => import('@/views/dashboard/tables/DataTables'),
+        component: () => import('@/views/dashboard/tables/DataTables')
       },
       // Root level
       {
         name: 'Widgets',
         path: 'widgets',
-        component: () => import('@/views/dashboard/Widgets'),
+        component: () => import('@/views/dashboard/Widgets')
       },
       {
         name: 'Charts',
         path: 'charts',
-        component: () => import('@/views/dashboard/Charts'),
+        component: () => import('@/views/dashboard/Charts')
       },
       {
         name: 'Calendar',
         path: 'calendar',
-        component: () => import('@/views/dashboard/Calendar'),
+        component: () => import('@/views/dashboard/Calendar')
       },
 
       {
         name: 'ActasList',
         path: '/actas/list/',
         component: () => import('@/views/dashboard/pages/acta/List'),
-        props: true,
+        props: true
       },
       {
         name: 'ActasCreate',
         path: '/actas/create/',
         component: () => import('@/views/dashboard/pages/acta/Create'),
-        props: true,
+        props: true
       },
       {
         name: 'ActasUpdate',
         path: '/actas/edit/:id/',
         component: () => import('@/views/dashboard/pages/acta/Update'),
-        props: true,
+        props: true
+      },
+      {
+        name: 'DecanatosList',
+        path: '/decanatos/list/',
+        component: () => import('@/views/dashboard/pages/decanatos/List'),
+        props: true
+      },
+      {
+        name: 'DecanatosCreate',
+        path: '/decanatos/create/',
+        component: () => import('@/views/dashboard/pages/decanatos/Create'),
+        props: true
+      },
+      {
+        name: 'DecanatosUpdate',
+        path: '/decanatos/edit/:id/',
+        component: () => import('@/views/dashboard/pages/decanatos/Update'),
+        props: true
       },
       //Profile
       {
         name: 'Profile',
         path: '/userprofile/edit',
-        component: () => import('@/views/dashboard/pages/user/UserProfile'),
-      },
-    ],
+        component: () => import('@/views/dashboard/pages/user/UserProfile')
+      }
+    ]
   },
   {
     path: '*',
@@ -240,16 +258,16 @@ const routes = [
       {
         name: '404 Error',
         path: '',
-        component: () => import('@/views/pages/Error'),
-      },
-    ],
-  },
+        component: () => import('@/views/pages/Error')
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes,
+  routes
 })
 
 router.beforeEach((to, from, next) => {

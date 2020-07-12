@@ -35,21 +35,21 @@
             </div>
             <form name="form" @submit.prevent="handleLogin">
               <v-text-field
+                v-model="user.username"
                 color="secondary"
                 label="Usuario"
-                v-model="user.username"
                 prepend-icon="mdi-email"
               />
 
               <v-text-field
+                v-model="user.password"
                 class="mb-8"
                 color="secondary"
                 label="Contraseña"
                 prepend-icon="mdi-lock-outline"
-                v-model="user.password"
               />
 
-              <pages-btn
+              <PagesBtn
                 large
                 color=""
                 depressed
@@ -57,7 +57,7 @@
                 @click="handleLogin()"
               >
                 Let's Go
-              </pages-btn>
+              </PagesBtn>
             </form>
           </v-card-text>
         </base-material-card>
@@ -73,7 +73,7 @@ export default {
   name: 'PagesLogin',
 
   components: {
-    PagesBtn: () => import('./components/Btn'),
+    PagesBtn: () => import('./components/Btn')
   },
 
   /*data: () => ({
@@ -100,24 +100,24 @@ export default {
       socials: [
         {
           href: '#',
-          icon: 'mdi-facebook-box',
+          icon: 'mdi-facebook-box'
         },
         {
           href: '#',
-          icon: 'mdi-twitter',
+          icon: 'mdi-twitter'
         },
         {
           href: '#',
-          icon: 'mdi-github-box',
-        },
-      ],
+          icon: 'mdi-github-box'
+        }
+      ]
     }
   },
 
   computed: {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn
-    },
+    }
   },
   created() {
     if (this.loggedIn) {
@@ -144,7 +144,7 @@ export default {
           }
         )
       }
-    },
-  },
+    }
+  }
 }
 </script>

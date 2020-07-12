@@ -20,7 +20,7 @@
 export default {
   name: 'PagesCoreFooter',
 
-  data: () => ({}),
+  data: () => ({})
 }
 </script>
 

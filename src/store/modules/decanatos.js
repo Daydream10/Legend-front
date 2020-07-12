@@ -1,5 +1,6 @@
 import decanatosService from '@/services/decanatosService'
 import * as types from '@/store/mutation-types'
+import { buildSuccess, handleError } from '@/utils/utils.js'
 
 const state = {
   decanatos: [],
@@ -61,15 +62,25 @@ const mutations = {
 
 const actions = {
   createDecanato({ commit }, decanato) {
-    return decanatosService
-      .createDecanato(decanato)
-      .then((response) => {
-        commit('ADD_DECANATO', decanato)
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    return new Promise((resolve, reject) => {
+      return decanatosService
+        .createDecanato(decanato)
+        .then((response) => {
+          commit('ADD_DECANATO', decanato)
+
+          console.log(response.data)
+          buildSuccess(
+            {
+              msg: 'Decanato se ha creado con exito',
+            },
+            commit,
+            resolve
+          )
+        })
+        .catch((error) => {
+          handleError(error, commit, reject)
+        })
+    })
   },
   fetchDecanatos({ commit }) {
     decanatosService
