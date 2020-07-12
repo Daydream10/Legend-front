@@ -98,9 +98,9 @@ export default {
         ],
       },
       {
-        group: '/meetings2', //reuniones
+        group: '/actas', //reuniones
         icon: 'mdi mdi-account-multiple',
-        title: 'meetings',
+        title: 'Actas',
         children: [
           {
             title: 'mee-list',

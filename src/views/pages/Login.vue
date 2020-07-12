@@ -31,39 +31,34 @@
 
           <v-card-text class="text-center">
             <div class="text-center grey--text body-1 font-weight-light">
-              Or Be Classical
+              Secretaría de la UCLA
             </div>
+            <form name="form" @submit.prevent="handleLogin">
+              <v-text-field
+                color="secondary"
+                label="Usuario"
+                v-model="user.username"
+                prepend-icon="mdi-email"
+              />
 
-            <v-text-field
-              color="secondary"
-              label="First Name..."
-              prepend-icon="mdi-face"
-              class="mt-10"
-            />
+              <v-text-field
+                class="mb-8"
+                color="secondary"
+                label="Contraseña"
+                prepend-icon="mdi-lock-outline"
+                v-model="user.password"
+              />
 
-            <v-text-field
-              color="secondary"
-              label="Email..."
-              prepend-icon="mdi-email"
-            />
-
-            <v-text-field
-              class="mb-8"
-              color="secondary"
-              label="Password..."
-              prepend-icon="mdi-lock-outline"
-            />
-
-            <pages-btn
-              large
-              color=""
-              depressed
-              class="v-btn--text success--text"
-              :to="{ name: 'Dashboard' }"
-              @click="login()"
-            >
-              Let's Go
-            </pages-btn>
+              <pages-btn
+                large
+                color=""
+                depressed
+                class="v-btn--text success--text"
+                @click="handleLogin()"
+              >
+                Let's Go
+              </pages-btn>
+            </form>
           </v-card-text>
         </base-material-card>
       </v-slide-y-transition>
@@ -72,6 +67,8 @@
 </template>
 
 <script>
+import User from '@/models/user'
+
 export default {
   name: 'PagesLogin',
 
@@ -79,7 +76,7 @@ export default {
     PagesBtn: () => import('./components/Btn'),
   },
 
-  data: () => ({
+  /*data: () => ({
     socials: [
       {
         href: '#',
@@ -94,10 +91,59 @@ export default {
         icon: 'mdi-github-box',
       },
     ],
-  }),
-  methods: {
-    login() {
+  }),*/
+  data() {
+    return {
+      user: new User('', ''),
+      username: '',
+      password: '',
+      socials: [
+        {
+          href: '#',
+          icon: 'mdi-facebook-box',
+        },
+        {
+          href: '#',
+          icon: 'mdi-twitter',
+        },
+        {
+          href: '#',
+          icon: 'mdi-github-box',
+        },
+      ],
+    }
+  },
+
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn
+    },
+  },
+  created() {
+    if (this.loggedIn) {
       this.$router.push('/')
+    }
+  },
+
+  methods: {
+    handleLogin() {
+      this.loading = true
+      /* this.$validator.validateAll()
+      if (this.errors.any()) {
+        this.loading = false
+        return
+      } */
+      if (this.user.username && this.user.password) {
+        this.$store.dispatch('auth/login', this.user).then(
+          () => {
+            this.$router.push('/')
+          },
+          (error) => {
+            this.loading = false
+            this.message = error.message
+          }
+        )
+      }
     },
   },
 }

@@ -209,19 +209,19 @@ const routes = [
 
       {
         name: 'ActasList',
-        path: '/actas/list/:id_decanato',
+        path: '/actas/list/',
         component: () => import('@/views/dashboard/pages/acta/List'),
         props: true,
       },
       {
         name: 'ActasCreate',
-        path: '/actas/create/:id_decanato',
+        path: '/actas/create/',
         component: () => import('@/views/dashboard/pages/acta/Create'),
         props: true,
       },
       {
         name: 'ActasUpdate',
-        path: '/actas/edit/:id/:id_decanato',
+        path: '/actas/edit/:id/',
         component: () => import('@/views/dashboard/pages/acta/Update'),
         props: true,
       },
@@ -252,7 +252,7 @@ const router = new VueRouter({
   routes,
 })
 
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   const publicPages = ['/login', '/register', '/home']
   const authRequired = !publicPages.includes(to.path)
   const loggedIn = localStorage.getItem('user')
@@ -264,6 +264,6 @@ const router = new VueRouter({
   } else {
     next()
   }
-})*/
+})
 
 export default router

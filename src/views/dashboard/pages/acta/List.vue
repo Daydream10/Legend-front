@@ -1,7 +1,13 @@
 <template>
   <v-container id="data-tables" tag="section">
     <div class="text-right">
-      <v-btn class="mx-2" fab dark color="primary" :to="{ name: 'ActaCreate' }">
+      <v-btn
+        class="mx-2"
+        fab
+        dark
+        color="primary"
+        :to="{ name: 'ActasCreate' }"
+      >
         <v-icon dark>
           mdi-plus
         </v-icon>
@@ -17,14 +23,6 @@
         <div class="display-2 font-weight-light">
           Lista de Actas
         </div>
-
-        <v-btn
-          class="btn btn-outline-primary col s12 m3"
-          type="button"
-          @click="success"
-        >
-          success
-        </v-btn>
       </template>
 
       <v-text-field
@@ -107,7 +105,7 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('acta/fetchActa')
+    this.$store.dispatch('actas/fetchActas')
   },
   computed: {
     ...mapGetters('actas', ['actas']),
