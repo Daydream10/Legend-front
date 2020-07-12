@@ -7,6 +7,7 @@ import './plugins/vee-validate'
 import vuetify from './plugins/vuetify'
 //import i18n from './locales'
 import i18n from '@/plugins/i18n'
+import VuetifyConfirm from 'vuetify-confirm'
 
 import '@/plugins/common'
 
@@ -23,6 +24,7 @@ const options = {
 }
 
 Vue.use(VueSweetalert2, options)
+Vue.use(VuetifyConfirm, { vuetify })
 
 Vue.config.productionTip = false
 

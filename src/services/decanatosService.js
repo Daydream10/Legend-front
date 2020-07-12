@@ -1,22 +1,22 @@
 import api from '@/services/api'
 
 export default {
-  getDecanatos () {
+  getDecanatos() {
     return api.get('/decanato')
   },
-  getActiveDecanatos () {
+  getActiveDecanatos() {
     return api.get('/decanato/activos')
   },
-  createDecanato (decanato) {
+  createDecanato(decanato) {
     return api.post('/decanato/', decanato)
   },
-  getDecanato (id) {
-    return api.get(`/decanato/${id}`)
+  getDecanato(codigo) {
+    return api.get(`/decanato/${codigo}`)
   },
-  updateDecanato (id, decanato) {
-    return api.put(`/decanato/${id}`, decanato)
+  updateDecanato(codigo, payload) {
+    return api.put(`/decanato/${codigo}`, payload)
   },
-  deleteDecanato (id) {
+  deleteDecanato(id) {
     return api.delete(`/decanato/${id}`)
-  }
+  },
 }

@@ -6,33 +6,33 @@ const API_URL = 'http://localhost:8080/api/test/'
 const API_URL2 = 'http://localhost:8080/api/auth/'
 
 class UserService {
-  getPublicContent () {
+  getPublicContent() {
     return axios.get(API_URL + 'all')
   }
 
-  getUserBoard () {
+  getUserBoard() {
     return axios.get(API_URL + 'user', { headers: authHeader() })
   }
 
-  getModeratorBoard () {
+  getModeratorBoard() {
     return axios.get(API_URL + 'mod', { headers: authHeader() })
   }
 
-  getAdminBoard () {
+  getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() })
   }
 
-  getAllUsers () {
+  getAllUsers() {
     return api.get(API_URL2)
   }
-
+  /*
   editUser (id, payload) {
     return api.put(API_URL2 + id)
   }
 
   deleteUser (id, payload) {
     return api.put(API_URL2 + id)
-  }
+  }*/
 }
 
 export default new UserService()

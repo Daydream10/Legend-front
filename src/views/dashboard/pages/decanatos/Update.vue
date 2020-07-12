@@ -2,76 +2,67 @@
   <v-container id="user-profile" fluid tag="section">
     <v-row justify="center">
       <v-col cols="12" md="8">
-        <base-material-card icon="mdi-account-outline">
+        <base-material-card icon="mdi-account-outline" color="primary">
           <template v-slot:after-heading>
             <div class="font-weight-light card-title mt-2">
-              Acta
-              <span class="body-1">— Registro de Acta</span>
+              Decanato
+              <span class="body-1">— Modificar Decanato</span>
             </div>
           </template>
-          <ValidationObserver ref="obs">
-            <v-form>
+          <ValidationObserver ref="observer" v-slot="{ invalid }">
+            <v-form @submit.prevent="submit()">
               <v-container class="py-0">
                 <v-row>
-                  <v-col cols="12" md="6">
-                    <VSelectWithValidation
-                      v-model="type"
-                      :items="items"
-                      item-text="name"
-                      item-value="id"
-                      label="Tipo de Servicio"
-                      rules="required"
-                      dense
-                      prepend-icon="mdi-account-group"
-                    />
-                  </v-col>
                   <v-col cols="12" md="4">
                     <VTextFieldWithValidation
-                      v-model="descripcion"
-                      label="Descripcion"
+                      label="Nombre"
                       color="secondary"
                       prepend-icon="mdi-account"
+                      v-model="nombre"
                       rules="required"
                       class="purple-input"
                     />
                   </v-col>
-                  <v-col cols="12" md="4">
-                    <v-col cols="6" md="6">
-                      <div
-                        class="font-weight-light card-title mt-1"
-                        text-align="center"
-                      >
-                        Fecha de la Reunión:
-                      </div>
-                      <v-row>
-                        <v-date-picker
-                          v-model="picker"
-                          label="Fecha"
-                          :landscape="landscape"
-                          :allowed-dates="allowedDates"
-                          class="mt-1"
-                          :min="nowDate"
-                        />
-                      </v-row>
-                    </v-col>
-
-                    <v-col cols="12" class="text-right">
-                      <v-btn
-                        color="success"
-                        class="ml-0"
-                        :to="{ name: 'ActaList' }"
-                      >
-                        {{ registrationCompleted }}
-                      </v-btn>
-                      <v-btn
-                        color="success"
-                        class="mr-0"
-                        @click.stop.prevent="submit"
-                        @click="createActa(inputs)"
-                      >
-                        Registrar
-                      </v-btn>
-                    </v-col>
+                  <v-col cols="12">
+                    <VTextFieldWithValidation
+                      label="Direccion"
+                      color="secondary"
+                      prepend-icon="mdi-home"
+                      v-model="direccion"
+                      rules="required"
+                      class="purple-input"
+                    />
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <VTextFieldWithValidation
+                      label="Telefono"
+                      color="secondary"
+                      prepend-icon="mdi-phone"
+                      v-model="telefono"
+                      rules="required"
+                      class="purple-input"
+                    />
+                  </v-col>
+                  <v-col cols="12" class="text-right">
+                    <v-btn
+                      color="purple"
+                      class="ml-0"
+                      float="right"
+                      margin-left="6px"
+                      :to="{ name: 'DecanatosList' }"
+                    >
+                      Atrás
+                    </v-btn>
+                    <v-btn
+                      color="primary"
+                      float="right"
+                      margin-left="6px"
+                      class="mr-0"
+                      @click="submit"
+                      :disabled="invalid"
+                    >
+                      Modificar
+                    </v-btn>
                   </v-col>
                 </v-row>
               </v-container>
@@ -80,85 +71,88 @@
         </base-material-card>
       </v-col>
     </v-row>
+    <ErrorMessage />
+    <SuccessMessage />
   </v-container>
 </template>
 
 <script>
 import { ValidationObserver } from 'vee-validate'
 import VTextFieldWithValidation from '@/components/inputs/VTextFieldWithValidation'
-import VSelectWithValidation from '@/components/inputs/VSelectWithValidation'
+//import VSelectWithValidation from '@/components/inputs/VSelectWithValidation'
 import { mapActions } from 'vuex'
 
 export default {
+  data() {
+    return {
+      status: '',
+    }
+  },
   components: {
     ValidationObserver,
     VTextFieldWithValidation,
-    VSelectWithValidation
-  },
-  data() {
-    return {
-      items: [
-        { name: 'Ordinario', id: '1' },
-        { name: 'Extraordinario', id: '2' }
-      ]
-    }
+    // VSelectWithValidation,
   },
   computed: {
-    descripcion: {
+    nombre: {
       get() {
-        return <this class="$store state acta descripcion"></this>
+        return this.$store.state.decanatos.decanato.nombre
       },
       set(value) {
         const data = {
-          key: 'descripcion',
-          value
+          key: 'nombre',
+          value,
         }
-        this.addActaData(data)
-      }
-    },
-    type: {
-      get() {
-        return this.$store.state.users.user.tipo_usuario.nombre
+        this.addDecanatoData(data)
       },
-
+    },
+    direccion: {
+      get() {
+        return this.$store.state.decanatos.decanato.direccion
+      },
       set(value) {
         const data = {
-          key: 'type',
-          value
+          key: 'direccion',
+          value,
         }
-        this.addActaData(data)
-      }
+        this.addDecanatoData(data)
+      },
     },
-    getTypeId(tipoServicio) {
-      let typeId = null
-      this.items.forEach((item) => {
-        if (item.name === tipoServicio) typeId = item.id
-      })
-
-      if (typeId === null) {
-        console.warn(
-          'Tipo servicio not found with tipoServicio: ',
-          tipoServicio
-        )
-      }
-      return typeId
-    }
+    telefono: {
+      get() {
+        return this.$store.state.decanatos.decanato.telefono
+      },
+      set(value) {
+        const data = {
+          key: 'telefono',
+          value,
+        }
+        this.addDecanatoData(data)
+      },
+    },
   },
   methods: {
-    ...mapActions('acta', ['fetchActa', 'addActaData', 'saveActar']),
+    ...mapActions('decanatos', [
+      'fetchDecanato',
+      'addDecanatoData',
+      'saveDecanato',
+    ]),
     async submit() {
-      await this.saveActa({
-        id: this.id,
-        tipoServicio: {
-          nombre: this.type
-        },
-        descripcion: this.descripcion
+      // this.$refs.obs.validate()
+      this.saveDecanato({
+        codigo: this.id,
+        nombre: this.nombre,
+        direccion: this.direccion,
+        telefono: this.telefono,
+        estatus: 'A',
       })
-    }
+    },
   },
+
   props: ['id'],
   async mounted() {
-    await this.fetchActa(this.id)
-  }
+    console.log(this.id)
+    await this.fetchDecanato(this.id)
+  },
 }
 </script>

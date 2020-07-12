@@ -96,13 +96,13 @@
     "UPDATED": "Updated At",
     "GO_BACK": "Go back",
 
-    "employee": {
-    "CREATE": "¿Desea crear este empleado?",
-    "EDIT": "¿Desea modificar este empleado?",
-    "DELETE": "¿Desea eliminar este empleado?",
-    "CREATED_SUCCESSFULLY": "Empleado se ha creado con éxito",
-    "EDITED_SUCCESSFULLY": "Empleado se ha modificado con éxito",
-    "DELETED_SUCCESSFULLY": "Empleado se ha eliminado con éxito"
+    "decanato": {
+    "CREATE": "¿Desea crear este decanato?",
+    "EDIT": "¿Desea modificar este decanato?",
+    "DELETE": "¿Desea eliminar este decanato?",
+    "CREATED_SUCCESSFULLY": "Decanato se ha creado con éxito",
+    "EDITED_SUCCESSFULLY": "Decanato se ha modificado con éxito",
+    "DELETED_SUCCESSFULLY": "Decanato se ha eliminado con éxito"
     },
 
     "project": {

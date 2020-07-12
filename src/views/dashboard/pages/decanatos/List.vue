@@ -53,7 +53,7 @@
             small
             class="mr-2"
             @click="editItem(item)"
-            :to="{ name: 'UserUpdate' }"
+            :to="{ name: 'DecanatosUpdate' }"
           >
             mdi-pencil
           </v-icon>
@@ -77,7 +77,7 @@ import { mapGetters, mapActions } from 'vuex'
 import { buildPayloadPagination } from '@/utils/utils.js'
 
 export default {
-  name: 'UsersTable',
+  name: 'DecanatosTable',
   data() {
     return {
       dataTableLoading: true,
@@ -119,7 +119,7 @@ export default {
       async handler() {
         try {
           this.dataTableLoading = true
-          await this.fetchUsers(
+          await this.fetchActiveDecanatos(
             buildPayloadPagination(this.pagination, this.buildSearch())
           )
           this.dataTableLoading = false
@@ -145,7 +145,7 @@ export default {
     async doSearch() {
       try {
         this.dataTableLoading = true
-        await this.getUsers(
+        await this.fetchActiveDecanatos(
           buildPayloadPagination(this.pagination, this.buildSearch())
         )
         this.dataTableLoading = false
@@ -161,15 +161,14 @@ export default {
     },
     async editItem(item) {
       // this.$store.dispatch('UserUpdate')
-      this.$router.push(`/users/edit/${item.id}/`)
+      this.$router.push(`/decanatos/edit/${item.codigo}/`)
     },
-    ...mapActions('users', ['deleteUser']),
+    ...mapActions('decanatos', ['deleteDecanato']),
     //props: ['id'],
     async deleteItem(item) {
       try {
         const response = await this.$confirm(
-          this.$t('common.employee.DELETE'),
-
+          this.$t('common.decanato.DELETE'),
           {
             title: this.$t('common.WARNING'),
             buttonTrueText: this.$t('common.DELETE'),
@@ -184,20 +183,9 @@ export default {
           console.log(item.id)
           this.dataTableLoading = true
           //await this.deleteUser(item.id, {})
-          await this.deleteUser({
-            id: item.id,
-            is_active: false,
-            email: this.email,
-            empleado: {
-              nombre: this.name,
-              apellido: this.lastName,
-              direccion: this.address,
-              telefono: this.phone,
-            },
-            tipo_usuario: this.type,
-          })
+          await this.deleteDecanato(item.codigo)
           this.dataTableLoading = false
-          this.$store.dispatch('users/fetchUsers')
+          this.$store.dispatch('decanatos/fetchActiveDecanatos')
           this.dataTableLoading = false
         }
         // eslint-disable-next-line no-unused-vars
