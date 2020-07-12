@@ -21,7 +21,7 @@ import locale from './modules/locale'
 import resources from './modules/resources'
 import artifacts from './modules/artifacts'
 import activities from './modules/activities'
-
+import actas from './modules/actas'
 //import * as user from '@/store/modules/user.js'
 
 Vue.use(Vuex)
@@ -70,6 +70,7 @@ export default new Vuex.Store({
     artifacts,
     board,
     activities,
+    actas,
   },
   strict: debug,
   plugins: debug ? [createLogger()] : [],

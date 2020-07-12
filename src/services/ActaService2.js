@@ -1,8 +1,8 @@
 import api from '@/services/api'
 
 export default {
-  getProcesses(id) {
-    return api.get(`/projects/${id}/listar_procesos`)
+  getActas() {
+    return api.get(`/listar/`)
   },
   getProcesses2(id, categoria) {
     return api.get(

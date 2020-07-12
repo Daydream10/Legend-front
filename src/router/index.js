@@ -300,6 +300,24 @@ const routes = [
         component: () => import('@/views/dashboard/pages/processes/Update'),
         props: true,
       },
+      {
+        name: 'ActasList',
+        path: '/actas/list/:id_decanato',
+        component: () => import('@/views/dashboard/pages/acta/List'),
+        props: true,
+      },
+      {
+        name: 'ActasCreate',
+        path: '/actas/create/:id_decanato',
+        component: () => import('@/views/dashboard/pages/acta/Create'),
+        props: true,
+      },
+      {
+        name: 'ActasUpdate',
+        path: '/actas/edit/:id/:id_decanato',
+        component: () => import('@/views/dashboard/pages/acta/Update'),
+        props: true,
+      },
 
       //Project
       {
