@@ -1,0 +1,267 @@
+{
+  "avatar": "Usuario",
+  "buttons": "Botones",
+  "calendar": "Calendario",
+  "charts": "Gráficos",
+  "components": "Componentes",
+  "ct": "PW",
+  "dashboard": "Inicio",
+  "dtables": "Data Tables",
+  "eforms": "Extended Forms",
+  "error": "Error Page",
+  "etables": "Extended Tables",
+  "example": "Example",
+  "forms": "Forms",
+  "fullscreen": "Full Screen Map",
+  "google": "Google Maps",
+  "grid": "Grid System",
+  "icons": "Iconos",
+  "lock": "Lock Screen Page",
+  "login1": "Login Page",
+  "maps": "Maps",
+  "multi": "Multi Level Collapse",
+  "notifications": "Notifications",
+  "pages": "Pages",
+  "plan": "Choose Plan",
+  "pricing": "Pricing",
+  "my-profile": "Mi Perfil",
+  "edit-profile": "Editar Perfil",
+  "register": "Register Page",
+  "rforms": "Regular Forms",
+  "rtables": "Regular Tables",
+  "rtl": "RTL Support",
+  "search": "Search",
+  "settings": "Settings",
+  "tables": "Tables",
+  "tabs": "Tabs",
+  "tim": "Phoenix Ware",
+  "timeline": "Timeline",
+  "typography": "Typography",
+  "user": "Perfil del Usuario",
+  "vforms": "Validation Forms",
+  "widgets": "Widgets",
+  "wizard": "Wizard",
+  "employee": "Administración",
+  "e-create": "Registrar Empleado",
+  "e-list": "Lista de Empleados",
+  "projects": "Proyectos",
+  "pr-create": "Nuevo Proyecto",
+  "pr-list": "Lista de Proyectos",
+  "meetings": "Reuniones",
+  "mee-create": "Agendar Reunión",
+  "mee-list": "Lista de Reuniones",
+  "team": "Equipo",
+  "te-list": "Miembros de Equipo",
+
+  "messages": {
+    "email": "Se requiere de un email válido",
+    "required": "Este campo es requerido",
+    "password": "Ingrese una contraseña",
+    "min": "Este campo no debe tener más de {length} caracteres",
+    "url": "La URL debe ser válida",
+    "confirmed": "Las contraseñas no coinciden"
+  },
+  "errors": {
+    "BAD_TOKEN": "Bad token",
+    "WRONG_PASSWORD": "Contraseña Incorrecta",
+    "USER_DOES_NOT_EXIST": "El usuario no existe",
+    "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden",
+    "PASSWORD_TOO_SHORT_MIN_5": "La contraseña es muy corta, el mínimo es 5 caracteres",
+    "BLOCKED_USER": "Muchos intentos fallidos, el ususario se ha bloqueado",
+    "SERVER_TIMEOUT_CONNECTION_ERROR": "Server is not responding, connection error",
+    "404": "404 Page not found",
+    "EMAIL_IS_NOT_VALID": "E-mail inválido",
+    "IS_EMPTY": "Campos vacíos",
+    "ERROR": "Error",
+    "MISSING": "Hay campos que están vacíos",
+    "NOT_FOUND_OR_ALREADY_VERIFIED": "No se encontró o ya fue verificado",
+    "NOT_FOUND_OR_ALREADY_USED": "No encontrado o ya está en uso",
+    "NOT_FOUND": "No fue encontrado",
+    "UNAUTHORIZED": "No autorizado",
+    "EMAIL_ALREADY_EXISTS": "El E-mail ya existe",
+    "ID_MALFORMED": "ID malformed",
+    "ERROR_WITH_FILTER": "Error with filter",
+    "CITY_ALREADY_EXISTS": "City already exists"
+  },
+  
+  "common": {
+    "DELETE": "Eliminar",
+    "CANCEL": "Cancelar",
+    "WARNING": "Advertencia",
+    "DO_YOU_REALLY_WANT_TO_DELETE_THIS_ITEM": "Seguro quieres eliminar esto?",
+    "CLOSE": "Cerrar",
+    "SAVED_SUCCESSFULLY": "Saved successfully",
+    "DELETED_SUCCESSFULLY": "Deleted successfully",
+    "CREATED": "Created At",
+    "UPDATED": "Updated At",
+    "GO_BACK": "Go back",
+
+    "employee": {
+    "CREATE": "¿Desea crear este empleado?",
+    "EDIT": "¿Desea modificar este empleado?",
+    "DELETE": "¿Desea eliminar este empleado?",
+    "CREATED_SUCCESSFULLY": "Empleado se ha creado con éxito",
+    "EDITED_SUCCESSFULLY": "Empleado se ha modificado con éxito",
+    "DELETED_SUCCESSFULLY": "Empleado se ha eliminado con éxito"
+    },
+
+    "project": {
+      "CREATE": "¿Desea crear este proyecto?",
+      "EDIT": "¿Desea modificar este proyecto?",
+      "DELETE": "¿Desea eliminar este proyecto?",
+      "CREATED_SUCCESSFULLY": "Proyecto se ha creado con éxito",
+      "EDITED_SUCCESSFULLY": "Proyecto se ha modificado con éxito",
+      "DELETED_SUCCESSFULLY": "Proyecto se ha eliminado con éxito"
+     },
+
+    "meeting": {
+      "CREATE": "¿Desea crear esta reunión?",
+      "EDIT": "¿Desea modificar esta reunión?",
+      "DELETE": "¿Desea eliminar esta reunión?",
+      "CREATED_SUCCESSFULLY": "Reunión se ha creado con éxito",
+      "EDITED_SUCCESSFULLY": "Reunión se ha modificado con éxito",
+      "DELETED_SUCCESSFULLY": "Reunión se ha eliminado con éxito"
+    },
+       "member": {
+         "CREATE": "¿Desea crear esta reunión?",
+         "EDIT": "¿Desea modificar esta reunión?",
+         "DELETE": "¿Desea eliminar esta reunión?",
+         "CREATED_SUCCESSFULLY": "Miembro se ha asignado con éxito",
+         "EDITED_SUCCESSFULLY": "Miembro se ha modificado con éxito",
+         "DELETED_SUCCESSFULLY": "Miembro se ha eliminado con éxito"
+       },
+
+
+    "loading": {
+      "PLEASE_WAIT": "Espere por favor..."
+    },
+    "footer": {
+      "MADE_WITH": "Hecho con",
+      "BY": "por"
+    },
+    "menuItems": {
+      "HOME": "Home",
+      "ABOUT": "Acerca de",
+      "MY_PROFILE": "My Profile",
+      "SIGNUP": "Sign Up",
+      "LOGIN": "Login",
+      "LOGOUT": "Logout"
+    },
+    "adminItems": {
+      "ADMIN": "Admin",
+      "CITIES": "Cities",
+      "USERS": "Users"
+    },
+    "roles": {
+      "ADMIN": "Administrator",
+      "USER": "User"
+    },
+    "dataTable": {
+      "NEW_ITEM": "Nuevo Item",
+      "EDIT_ITEM": "Editar Item",
+      "CANCEL": "Cancelar",
+      "SAVE": "Guardar",
+      "EDIT": "Editar",
+      "DELETE": "Eliminar",
+      "RESET": "Resetear",
+      "ACTIONS": "Acciones",
+      "ROWS_PER_PAGE": "Filas por Página",
+      "NO_DATA": "No hay datos",
+      "NO_RESULTS": "Sin resultados",
+      "OF": "de",
+      "SEARCH": "Buscar"
+    },
+    "cities": {
+      "TITLE": "Cities",
+      "headers": {
+        "NAME": "Name"
+      }
+    },
+    "users": {
+      "TITLE": "Users",
+      "headers": {
+        "NAME": "Name",
+        "EMAIL": "E-mail",
+        "ROLE": "Role",
+        "VERIFIED": "Verified",
+        "CITY": "City",
+        "COUNTRY": "Country",
+        "PHONE": "Phone"
+      },
+      "PASSWORD": "Password",
+      "CONFIRM_PASSWORD": "Confirm Password"
+    },
+    "landing": {
+      "TITLE": "Landing",
+      "DESCRIPTION": "This page is publicly available.",
+      "BUY_ME_A_COFFEE": "Buy me a coffee",
+      "BUY_ME_A_COFFEE_DESCRIPTION": "I'm doing my best to provide you a good experience when using my apps, so if you like what I'm doing and wish to say \"thanks!\", please click the button and buy me a coffee.",
+      "DESCRIPTION_VUE": "This project is created to help other web developers create a basic VueJS app in an easy way.",
+      "DESCRIPTION_API": "Demo is also linked to a Node.js express.js MongoDB JWT REST API project that shows how this frontend can be integrated to an API.",
+      "API_DOCUMENTATION": "API documentation",
+      "FRONTEND_DOCUMENTATION": "Frontend documentation"
+    },
+    "home": {
+      "TITLE": "Protected Home",
+      "GREETING": "Welcome %{0}",
+      "DESCRIPTION": "This page is only available privately when the users log in with their credentials",
+      "VERIFY_YOUR_ACCOUNT": "IMPORTANT: Verify your account",
+      "VERIFY_YOUR_ACCOUNT_DESCRIPTION": "You must verify your account by clicking the link sent to your E-mail to be able to enjoy all our app features",
+      "CLOSE": "Close"
+    },
+    "about": {
+      "TITLE": "About",
+      "DESCRIPTION": "This page is publicly available"
+    },
+    "login": {
+      "TITLE": "Login",
+      "DESCRIPTION": "This is a demo. Database resets every 30 mins. So anything you do will be lost after a short time.<br />E-mail: admin@admin.com <br />Password: 12345",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Password",
+      "LOGIN": "Login",
+      "FORGOT_PASSWORD": "Forgot password?"
+    },
+    "forgotPassword": {
+      "TITLE": "Forgot my password",
+      "EMAIL": "E-mail",
+      "DESCRIPTION": "Enter your E-mail address so we can send you a message with instructions to recover your password",
+      "RECOVER": "Recover",
+      "RESET_EMAIL_SENT": "We have sent a message to %{0} with instructions to recover your password"
+    },
+    "resetPassword": {
+      "TITLE": "Change Password",
+      "PASSWORD": "Password",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "CHANGE_PASSWORD": "Change Password",
+      "PASSWORD_CHANGED": "Password changed successfully"
+    },
+    "signup": {
+      "TITLE": "Signup",
+      "NAME": "Name",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Password",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "SIGN_ME_UP": "Sign me up"
+    },
+    "verify": {
+      "TITLE": "E-mail verification",
+      "EMAIL_VERIFIED": "E-mail verified successfully"
+    },
+    "myProfile": {
+      "TITLE": "Mi Perfil",
+      "CHANGE_MY_PASSWORD": "Cambiar contraseña",
+      "CURRENT_PASSWORD": "Co",
+      "NEW_PASSWORD": "New Password",
+      "CONFIRM_NEW_PASSWORD": "Confirm New Password",
+      "PASSWORD_CHANGED": "Contraseña cambiada con éxito",
+      "NAME": "Name",
+      "EMAIL": "E-mail",
+      "PHONE": "Phone",
+      "CITY": "City",
+      "NO_RESULTS_FOUND": "No results found",
+      "COUNTRY": "Country",
+      "SAVE": "Save",
+      "PROFILE_SAVED_SUCCESSFULLY": "Perfil se ha modificado con éxito"
+    }
+  }
+}
