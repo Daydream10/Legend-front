@@ -81,9 +81,9 @@ export default {
         to: '/',
       },
       {
-        group: '/projects', //proyectos
+        group: '/users', //proyectos
         icon: 'mdi mdi-rocket',
-        title: 'projects',
+        title: 'Usuarios',
         children: [
           {
             title: 'pr-create',
@@ -110,9 +110,9 @@ export default {
         ],
       },
       {
-        group: '/users', //
+        group: '/decanatos', //
         icon: 'mdi mdi-folder-account',
-        title: 'employee',
+        title: 'Decanato',
         children: [
           {
             title: 'e-create',

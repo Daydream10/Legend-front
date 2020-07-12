@@ -25,8 +25,11 @@
             <v-icon size="18">
               mdi-heart
             </v-icon>
-            by <a href="https://github.com/Systeem3/">Syteem</a> for a better
-            web.
+            by
+            <a href="https://github.com/Daydream10/Legend-front"
+              >Equipo Lab II</a
+            >
+            for a better web.
           </div>
         </v-col>
       </v-row>

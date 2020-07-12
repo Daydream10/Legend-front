@@ -41,7 +41,7 @@
                         class="font-weight-light card-title mt-1"
                         text-align="center"
                       >
-                        Fecha de la Reunión:
+                        Fecha:
                       </div>
                       <v-row>
                         <v-date-picker
@@ -59,9 +59,9 @@
                       <v-btn
                         color="success"
                         class="ml-0"
-                        :to="{ name: 'ActaList' }"
+                        :to="{ name: 'ActasList' }"
                       >
-                        {{ registrationCompleted }}
+                        Atrás
                       </v-btn>
                       <v-btn
                         color="success"
@@ -121,23 +121,7 @@ export default {
     submit() {
       this.$refs.obs.validate()
     },
-    ...mapActions('acta', ['createActa']),
-    beforeRouteLeave(to, from, next) {
-      alert('test2')
-      if (this.$store.commit('registrationCompleted')) {
-        next('/acta')
-        alert('test')
-      } else {
-        next()
-      }
-    },
-    goBack(goBackByStep) {
-      // (-ve  => go back/ +ve => go forward)
-      var step = goBackByStep || -1
-      setTimeout(() => {
-        this.$router.go(step)
-      }, 3000)
-    },
+    ...mapActions('actas', ['createActa']),
   },
 }
 </script>
