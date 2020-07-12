@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '@/store'
+//import store from '@/store'
 
 Vue.use(VueRouter)
-
+/*
 const requireAuthenticated = (to, from, next) => {
   store.dispatch('auth/initialize').then(() => {
     if (!store.getters['auth/isAuthenticated']) {
@@ -27,7 +27,7 @@ const requireUnauthenticated = (to, from, next) => {
 const redirectLogout = (to, from, next) => {
   store.dispatch('auth/logout').then(() => next('/login/identifier'))
 }
-
+*/
 const routes = [
   {
     path: '/auth',
@@ -41,7 +41,7 @@ const routes = [
             path: 'identifier',
             name: 'identifier',
             component: () => import('@/views/auth/LoginIdentifier'),
-            beforeEnter: requireUnauthenticated,
+        //    beforeEnter: requireUnauthenticated,
           },
           {
             path: 'password-reset',
@@ -55,12 +55,12 @@ const routes = [
           },
           {
             path: '/logout',
-            beforeEnter: redirectLogout,
+         //   beforeEnter: redirectLogout,
           },
         ],
       },
     ],
-  },
+  }
   {
     path: '/pages',
     component: () => import('@/views/pages/Index'),
@@ -91,7 +91,7 @@ const routes = [
     path: '/',
     component: () => import('@/views/dashboard/Index'),
 
-    beforeEnter: requireAuthenticated,
+   // beforeEnter: requireAuthenticated,
     children: [
       // Dashboard - Level 1 - Projects
       {

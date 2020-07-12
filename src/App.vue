@@ -12,7 +12,7 @@ import Loading from '@/components/core/Loading.vue'
 
 export default {
   name: 'App',
-  computed: mapGetters('auth', ['isAuthenticated']),
+ // computed: mapGetters('auth', ['isAuthenticated']),
 
   components: {
     Loading,
