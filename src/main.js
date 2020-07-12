@@ -25,7 +25,6 @@ const options = {
 }
 
 Vue.use(VueSweetalert2, options)
-Vue.use(VuetifyConfirm, { vuetify })
 
 Vue.config.productionTip = false
 

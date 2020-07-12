@@ -41,7 +41,7 @@ const routes = [
             path: 'identifier',
             name: 'identifier',
             component: () => import('@/views/auth/LoginIdentifier'),
-        //    beforeEnter: requireUnauthenticated,
+            //    beforeEnter: requireUnauthenticated,
           },
           {
             path: 'password-reset',
@@ -55,12 +55,12 @@ const routes = [
           },
           {
             path: '/logout',
-         //   beforeEnter: redirectLogout,
+            //   beforeEnter: redirectLogout,
           },
         ],
       },
     ],
-  }
+  },
   {
     path: '/pages',
     component: () => import('@/views/pages/Index'),
@@ -91,42 +91,13 @@ const routes = [
     path: '/',
     component: () => import('@/views/dashboard/Index'),
 
-   // beforeEnter: requireAuthenticated,
+    // beforeEnter: requireAuthenticated,
     children: [
       // Dashboard - Level 1 - Projects
       {
         name: 'Dashboard',
         path: '',
         component: () => import('@/views/dashboard/Dashboard'),
-      },
-      // Level 2 - Stages
-      {
-        name: 'Stages',
-        path: 'stages',
-        component: () => import('@/views/dashboard/boards/Stages'),
-      },
-      // Level 3 - Processes
-      {
-        name: 'Processes',
-        path: 'processes/:id_project',
-        component: () => import('@/views/dashboard/boards/Processes'),
-        props: true,
-      },
-      /* children: [
-          // Level 4 - Kanban
-          {
-            name: 'Board',
-            path: 'board',
-            component: () => import('@/views/dashboard/boards/Kanban/Board'),
-            props: true,
-          },
-        ],*/
-      // Level 4 - Kanban
-      {
-        name: 'Board',
-        path: 'board/:id_process',
-        component: () => import('@/views/dashboard/boards/Kanban/Board'),
-        // props: true,
       },
 
       // Pages
@@ -375,28 +346,6 @@ const routes = [
         name: 'MemberCreate',
         path: '/member/create/:id_project',
         component: () => import('@/views/dashboard/pages/members/Create'),
-      },
-      // Kanban
-      {
-        name: 'KanbanTest',
-        path: '/kanban/test',
-        component: () => import('@/views/dashboard/kanban/Kanban'),
-      },
-      {
-        path: '/boards/:id',
-        name: 'board',
-        component: () => import('@/views/ViewBoard'),
-
-        children: [
-          {
-            path: 'card/add',
-            component: () => import('@/views/AddCard'),
-          },
-          {
-            path: 'card/:card',
-            component: () => import('@/views/ViewCard'),
-          },
-        ],
       },
       //Time  and Costs (Calculadoras)
       {

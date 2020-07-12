@@ -29,7 +29,6 @@ Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 //const debug = true
 
-import persistedState from 'vuex-persistedstate'
 import board from './modules/board'
 
 export default new Vuex.Store({
@@ -74,5 +73,4 @@ export default new Vuex.Store({
   },
   strict: debug,
   plugins: debug ? [createLogger()] : [],
-  [persistedState()]: [],
 })
