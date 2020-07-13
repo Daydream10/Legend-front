@@ -19,7 +19,7 @@
                       :items="items"
                       item-text="name"
                       item-value="id"
-                      label="Tipo de Sesion"
+                      label="Type"
                       rules="required"
                       dense
                       prepend-icon="mdi-account-group"

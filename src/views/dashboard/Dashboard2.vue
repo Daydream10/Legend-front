@@ -7,6 +7,17 @@
         </div>
       </v-col>
 
+      <v-col cols="12" sm="6" lg="3">
+        <base-material-stats-card
+          color="info"
+          icon="mdi-twitter"
+          label="Actas Registradas"
+          value="+245"
+          sub-icon="mdi-clock"
+          sub-text="Just Updated"
+          :number="actas"
+        />
+      </v-col>
       <!-- <v-col sm="12" md="4">
         <base-material-card color="transparent" image hover-reveal>
           <template v-slot:image>
@@ -158,52 +169,24 @@
 </template>
 
 <script>
-//import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'DashboardDashboard',
 
   data() {
     return {
-      id_project: this.$route.params.id_project,
-      img: '',
-      images: [],
+      actas: null,
+      decanatos: null,
+      usuarios: null,
+      rolUser: '',
     }
   },
-
+  created() {},
   computed: {
-    //...mapGetters('projects', ['projects']),
-    aleatorio() {
-      var random
-      random = Math.floor(Math.random() * 10)
-      return this.images[random]
-    },
+    ...mapGetters('actas', ['contadores']),
   },
-
   methods: {
-    //  ...mapActions('projects', ['fetchProjects']),
-    complete(index) {
-      this.list[index] = !this.list[index]
-    },
-    hello(value) {
-      alert(value)
-    },
-
-    async llenarimages() {
-      var randomNumber
-
-      for (let index = 0; index < 10; index++) {
-        randomNumber = Math.floor(Math.random() * 94)
-        fetch(
-          `https://source.unsplash.com/collection/4540043/600x400/?sig=${randomNumber}`
-        ).then((response) => {
-          this.images.push(response.url)
-        })
-      }
-    },
-  },
-  created() {
-    //   this.fetchProjects()
-    this.llenarimages()
+    ...mapActions('actas', ['fetchContadores']),
   },
 }
 </script>
