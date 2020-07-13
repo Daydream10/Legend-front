@@ -213,13 +213,6 @@ const routes = [
         component: () => import('@/views/dashboard/pages/acta/List'),
         props: true,
       },
-
-      {
-        name: 'ActasReport',
-        path: '/actas/report/',
-        component: () => import('@/views/dashboard/pages/acta/Reporte'),
-        props: true,
-      },
       {
         name: 'ActasCreate',
         path: '/actas/create/',
@@ -248,6 +241,12 @@ const routes = [
         name: 'DecanatosUpdate',
         path: '/decanatos/edit/:id/',
         component: () => import('@/views/dashboard/pages/decanatos/Update'),
+        props: true,
+      },
+      {
+        name: 'Report',
+        path: '/actas/report/',
+        component: () => import('@/views/dashboard/pages/acta/Report'),
         props: true,
       },
       //Profile
