@@ -125,6 +125,13 @@ export default {
       get() {
         return this.$store.state.actas.acta.tipo
       },
+      set(value) {
+        const data = {
+          key: 'tipo',
+          value,
+        }
+        this.addActaData(data)
+      },
     },
     getTypeId(tipoSesion) {
       let typeId = null
