@@ -82,7 +82,7 @@ export default {
       // users: [],
       headers: [
         {
-          text: 'Tipo Sesion',
+          text: 'Tipo Servicio',
           value: 'tipo',
         },
         {
@@ -196,25 +196,29 @@ export default {
 
     async editItem(item) {
       // this.$store.dispatch('UserUpdate')
-      this.$router.push(`/actas/edit/${item.codigo}/`)
+      this.$router.push(`/decanatos/edit/${item.codigo}/`)
     },
+    ...mapActions('decanatos', ['deleteDecanato']),
     //props: ['id'],
     async deleteItem(item) {
       try {
-        const response = await this.$confirm(this.$t('common.acta.DELETE'), {
-          title: this.$t('common.WARNING'),
-          buttonTrueText: this.$t('common.DELETE'),
-          buttonFalseText: this.$t('common.CANCEL'),
-          //  buttonTrueColor: 'red lighten3',
-          // buttonFalseColor: 'yellow',
-          buttonTrueColor: 'purple',
-          buttonFalseColor: 'primary',
-        })
+        const response = await this.$confirm(
+          this.$t('common.decanato.DELETE'),
+          {
+            title: this.$t('common.WARNING'),
+            buttonTrueText: this.$t('common.DELETE'),
+            buttonFalseText: this.$t('common.CANCEL'),
+            //  buttonTrueColor: 'red lighten3',
+            // buttonFalseColor: 'yellow',
+            buttonTrueColor: 'purple',
+            buttonFalseColor: 'primary',
+          }
+        )
         if (response) {
           console.log(item.id)
           this.dataTableLoading = true
           //await this.deleteUser(item.id, {})
-          await this.deleteActa(item.codigo)
+          await this.deleteDecanato(item.codigo)
           this.dataTableLoading = false
           this.$store.dispatch('actas/fetchActiveActas')
           this.dataTableLoading = false

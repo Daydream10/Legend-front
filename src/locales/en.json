@@ -104,6 +104,14 @@
     "EDITED_SUCCESSFULLY": "Decanato se ha modificado con éxito",
     "DELETED_SUCCESSFULLY": "Decanato se ha eliminado con éxito"
     },
+    "acta": {
+      "CREATE": "¿Desea crear esta acta?",
+      "EDIT": "¿Desea modificar esta acta?",
+      "DELETE": "¿Desea eliminar esta acta?",
+      "CREATED_SUCCESSFULLY": "Acta se ha creado con éxito",
+      "EDITED_SUCCESSFULLY": "Acta se ha modificado con éxito",
+      "DELETED_SUCCESSFULLY": "Acta se ha eliminado con éxito"
+    },
 
     "project": {
       "CREATE": "¿Desea crear este proyecto?",

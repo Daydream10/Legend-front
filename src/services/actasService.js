@@ -2,44 +2,46 @@
 import api from '@/services/api'
 
 export default {
-  getActas () {
+  getActas() {
     return api.get('/acta/')
   },
-  getActiveActas () {
+  getActa(codigo) {
+    return api.get(`/acta/${codigo}`)
+  },
+  getActiveActas() {
     return api.get('/acta/activos')
   },
-  createActa (acta) {
+  createActa(acta) {
     return api.post('/acta/', acta)
   },
-  getActasDecanato (id) {
+  getActasDecanato(id) {
     return api.get(`/acta/decanato/${id}/`)
   },
-  updateActa (id, acta) {
+  updateActa(id, acta) {
     return api.put(`/acta/${id}`, acta)
   },
-  deleteActa (codigo) {
+  deleteActa(codigo) {
     return api.delete(`/acta/${codigo}`)
   },
-  getContador () {
+  getContador() {
     return api.get('/dash/contadores')
   },
-  getContadorActas (cod, mes) {
+  getContadorActas(cod, mes) {
     return api.get(`/reporte/actasPorDecanato/${cod}/${mes}`)
   },
-  getEstados(){
+  getEstados() {
     return api.get('/estado/activos/')
   },
-  updateEstado (codigo, estado) {
+  updateEstado(codigo, estado) {
     return api.put(`/estado/${codigo}`, estado)
   },
-  createEstado (estado) {
+  createEstado(estado) {
     return api.post('/estado/', estado)
   },
-  deleteEstado (codigo) {
+  deleteEstado(codigo) {
     return api.delete(`/estado/${codigo}`)
   },
-  getActasReporte(cod, mes){
+  getActasReporte(cod, mes) {
     return api.get(`/reporte/listadeActas/${cod}/${mes}`)
-
-  }
+  },
 }
