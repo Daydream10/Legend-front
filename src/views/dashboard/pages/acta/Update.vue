@@ -123,7 +123,7 @@ export default {
 
     tipo: {
       get() {
-        return this.$store.state.actas.acta.tipo
+        return String(this.$store.state.actas.acta.tipo)
       },
       set(value) {
         const data = {
