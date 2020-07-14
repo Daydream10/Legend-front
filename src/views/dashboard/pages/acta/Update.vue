@@ -36,6 +36,17 @@
                       </option>
                     </select>
                   </v-col>
+                  <v-col cols="12" md="6">
+                    <select v-model="estado">
+                      <option
+                        v-for="estado in estados"
+                        :key="estado.codigo"
+                        :value="estado"
+                      >
+                        {{ estado.nombre }}
+                      </option>
+                    </select>
+                  </v-col>
                   <v-col cols="12">
                     <VTextFieldWithValidation
                       label="Descripcion"
@@ -120,6 +131,7 @@ export default {
   },
   computed: {
     ...mapGetters('decanatos', ['decanatos']),
+    ...mapGetters('estados', ['estados']),
 
     tipo: {
       get() {
@@ -169,6 +181,18 @@ export default {
         this.addActaData(data)
       },
     },
+    estado: {
+      get() {
+        return this.$store.state.actas.acta.estado
+      },
+      set(value) {
+        const data = {
+          key: 'estado',
+          value,
+        }
+        this.addActaData(data)
+      },
+    },
   },
   methods: {
     // ...mapActions('decanatos', ['fetchDecanato', 'addDecanatoData']),
@@ -181,6 +205,7 @@ export default {
         tipo: this.tipo,
         descripcion: this.descripcion,
         decanato: this.decanato,
+        estado: this.estado,
         estatus: 'A',
       })
     },

@@ -1,7 +1,7 @@
 <template>
   <v-container id="acta-profile" fluid tag="section">
     <v-row justify="center">
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="6">
         <base-material-card icon="mdi-account-outline">
           <template v-slot:after-heading>
             <div class="font-weight-light card-title mt-2">
@@ -9,7 +9,7 @@
               <span class="body-1">— Reporte de Acta</span>
             </div>
           </template>
-          <v-col cols="12" md="6">
+          <v-col cols="12" md="12">
             <v-row align="center">
               <v-date-picker
                 v-model="picker"
@@ -95,7 +95,7 @@ export default {
     ...mapActions('decanatos', ['fetchActiveDecanatos']),
     ...mapActions('actas', ['fetchContadorActas','fetchActasReporte']),
     async buscar(){
-      const month=new Date(this.picker).getMonth()+1
+      const month=new Date(this.picker).getMonth()+2
       await this.fetchContadorActas({
         codigo:this.form.decanato.codigo,
         month:month

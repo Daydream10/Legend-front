@@ -232,6 +232,12 @@ const routes = [
         props: true,
       },
       {
+        name: 'EstadosList',
+        path: '/estado/list/',
+        component: () => import('@/views/dashboard/pages/acta/ListEstado'),
+        props: true,
+      },
+      {
         name: 'DecanatosCreate',
         path: '/decanatos/create/',
         component: () => import('@/views/dashboard/pages/decanatos/Create'),

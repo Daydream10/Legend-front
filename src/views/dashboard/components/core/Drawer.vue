@@ -107,6 +107,16 @@ export default {
             to: 'list',
             icon: 'mdi-account-multiple',
           },
+          {
+            title: 'Crear Acta',
+            to: 'create',
+            icon: 'mdi-account-multiple',
+          },
+          {
+            title: 'Reporte Acta',
+            to: 'report',
+            icon: 'mdi-account-multiple',
+          },
         ],
       },
       {

@@ -6,27 +6,26 @@
         fab
         dark
         color="primary"
-        :to="{ name: 'ActasCreate' }"
+        :to="{ name: 'DecanatosCreate' }"
       >
-        <v-icon dark>
-          mdi-plus
-        </v-icon>
+        <v-icon dark>mdi-plus</v-icon>
       </v-btn>
     </div>
     <base-material-card
-      color="indigo"
+      color="secondary"
       icon="mdi-vuetify"
       inline
       class="px-5 py-3"
     >
       <template v-slot:after-heading>
         <div class="display-2 font-weight-light">
-          Lista de Actas
+          Lista de Estados
         </div>
       </template>
 
       <v-text-field
         v-model="search"
+        id="search"
         append-icon="mdi-magnify"
         class="ml-auto"
         label="Search"
@@ -38,22 +37,23 @@
       <v-divider class="mt-3" />
 
       <v-data-table
+        :loading="dataTableLoading"
+        :no-data-text="$t('common.dataTable.NO_DATA')"
+        :no-results-text="$t('common.dataTable.NO_RESULTS')"
         :headers="headers"
-        :items="actas"
+        :items="estados"
         :search.sync="search"
-        :sort-by="['name', 'office']"
+        :options.sync="pagination"
+        :sort-by="['name']"
         :sort-desc="[false, true]"
         multi-sort
       >
         <template v-slot:item.actions="{ item }">
-          <v-icon small class="mr-2" @click="download(item.pdf.id)">
-            mdi-download
-          </v-icon>
           <v-icon
             small
             class="mr-2"
-            :to="{ name: 'ActasUpdate' }"
             @click="editItem(item)"
+            :to="{ name: 'EstadosUpdate' }"
           >
             mdi-pencil
           </v-icon>
@@ -61,79 +61,57 @@
             mdi-delete
           </v-icon>
         </template>
+        <template v-slot:no-data>{{ $t('common.dataTable.NO_DATA') }}</template>
+        <template v-slot:no-results>{{
+          $t('common.dataTable.NO_RESULTS')
+        }}</template>
       </v-data-table>
     </base-material-card>
+    <ErrorMessage />
+    <SuccessMessage />
   </v-container>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-// import { Vue } from 'vue-property-decorator'
-//import FilePicker from '@/components/FilePicker'
-import axios from 'axios'
-import authHeader from '@/services/auth-header.js'
-//import Cookies from 'js-cookie'
 import { buildPayloadPagination } from '@/utils/utils.js'
 
 export default {
-  name: 'ActasTable',
+  name: 'EstadosTable',
   data() {
     return {
-      // users: [],
+      dataTableLoading: true,
+      pagination: {},
+
       headers: [
         {
-          text: 'Tipo Sesion',
-          value: 'tipo',
-        },
-        {
-          text: 'Descripcion',
-          value: 'descripcion',
-        },
-        {
-          text: 'Fecha',
-          value: 'fecha',
-        },
-        {
-          text: 'Decanato',
-          value: 'decanato.nombre',
-        },
-        {
-          text: 'Estado',
-          value: 'estado.nombre',
+          text: 'Estados',
+          value: 'nombre',
+
+          //sortable: true,
         },
         {
           sortable: false,
-          text: 'Actions',
+          text: 'Acciones',
           value: 'actions',
         },
       ],
-      loader: true,
-
-      search: undefined,
+      // loader: true,
+      delayTimer: null,
+      search: '',
+      fieldsToSearch: ['nombre'],
     }
   },
 
   created() {
-    const user = JSON.parse(localStorage.getItem('user'))
-    console.log(user)
-    this.rol = user.roles[0] === 'ROLE_ADMIN'
-    if (user.roles[0] === 'ROLE_ADMIN') {
-      this.fetchActiveActas()
-    } else {
-      console.log(user.decanato.codigo)
-      console.log(user.estado.codigo)
-      this.fetchActasDecanato(user.decanato.codigo)
-      this.fetchActasEstado(user.estado.codigo)
-    }
-    this.fetchActiveDecanatos()
-    this.fetchActiveEstados()
+    this.$store.dispatch('estados/fetchActiveEstados')
   },
   watch: {
     pagination: {
       async handler() {
         try {
           this.dataTableLoading = true
-          await this.fetchActiveActas(
+          await this.fetchActiveEstados(
             buildPayloadPagination(this.pagination, this.buildSearch())
           )
           this.dataTableLoading = false
@@ -152,19 +130,14 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('actas', ['actas']),
-
-    ...mapGetters('decanatos', ['decanatos']),
-
     ...mapGetters('estados', ['estados']),
   },
-  mounted() {},
 
   methods: {
     async doSearch() {
       try {
         this.dataTableLoading = true
-        await this.fetchActiveActas(
+        await this.fetchActiveEstados(
           buildPayloadPagination(this.pagination, this.buildSearch())
         )
         this.dataTableLoading = false
@@ -178,42 +151,15 @@ export default {
         ? { query: this.search, fields: this.fieldsToSearch.join(',') }
         : {}
     },
-    download(id) {
-      const header = authHeader()
-      axios
-        .get(`http://localhost:8080/api/pdf/downloadFile/${id}`, {
-          headers: header,
-          responseType: 'blob',
-        })
-        .then((response) => {
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]))
-          var fileLink = document.createElement('a')
-          fileLink.href = fileURL
-          fileLink.setAttribute('download', 'file.pdf')
-          document.body.appendChild(fileLink)
-          fileLink.click()
-        })
-    },
-    ...mapActions('actas', [
-      'fetchActiveActas',
-      'deleteActa',
-      'fetchActas',
-      'saveActa',
-      'fetchActasDecanato',
-      'fetchEstadosDecanato',
-      'fetchActasEstado',
-    ]),
-    ...mapActions('decanatos', ['fetchActiveDecanatos']),
-    ...mapActions('estados', ['fetchActiveEstados']),
-
     async editItem(item) {
       // this.$store.dispatch('UserUpdate')
-      this.$router.push(`/actas/edit/${item.codigo}/`)
+      this.$router.push(`/estados/edit/${item.codigo}/`)
     },
+    ...mapActions('estados', ['deleteEstado']),
     //props: ['id'],
     async deleteItem(item) {
       try {
-        const response = await this.$confirm(this.$t('common.acta.DELETE'), {
+        const response = await this.$confirm(this.$t('common.estado.DELETE'), {
           title: this.$t('common.WARNING'),
           buttonTrueText: this.$t('common.DELETE'),
           buttonFalseText: this.$t('common.CANCEL'),
@@ -226,9 +172,9 @@ export default {
           console.log(item.id)
           this.dataTableLoading = true
           //await this.deleteUser(item.id, {})
-          await this.deleteActa(item.codigo)
+          await this.deleteDecanato(item.codigo)
           this.dataTableLoading = false
-          this.$store.dispatch('actas/fetchActiveActas')
+          this.$store.dispatch('estado/fetchActiveEstados')
           this.dataTableLoading = false
         }
         // eslint-disable-next-line no-unused-vars
@@ -237,5 +183,6 @@ export default {
       }
     },
   },
+  mounted() {},
 }
 </script>

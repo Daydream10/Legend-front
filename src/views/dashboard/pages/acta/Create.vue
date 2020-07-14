@@ -36,6 +36,17 @@
                       </option>
                     </select>
                   </v-col>
+                  <v-col cols="12" md="6">
+                    <select v-model="form.estado">
+                      <option
+                        v-for="estado in estados"
+                        :key="estado.codigo"
+                        :value="estado"
+                      >
+                        {{ estado.nombre }}
+                      </option>
+                    </select>
+                  </v-col>
                   <v-col cols="12">
                     <VTextFieldWithValidation
                       label="Descripcion"
@@ -111,6 +122,7 @@ export default {
         tipo: null,
         descripcion: null,
         decanato: 1,
+        estado: 1,
         fecha: today,
         estatus: 'A',
         ult_actializacion: today,
@@ -130,12 +142,15 @@ export default {
   },
   computed: {
     ...mapGetters('decanatos', ['decanatos']),
+    ...mapGetters('estados', ['estados']),
   },
   mounted() {
     this.fetchActiveDecanatos()
+    this.fetchActiveEstados()
   },
   methods: {
     ...mapActions('decanatos', ['fetchActiveDecanatos']),
+    ...mapActions('estados', ['fetchActiveEstados']),
     ...mapActions('actas', ['createActa']),
     async submit() {
       const user = JSON.parse(localStorage.getItem('user'))
@@ -162,6 +177,7 @@ export default {
         tipo: this.form.tipo,
         descripcion: this.form.descripcion,
         decanato: this.form.decanato,
+        estado: this.form.estado,
         fecha: this.form.fecha,
         estatus: this.form.estatus,
         ult_actializacion: this.form.ult_actializacion,
